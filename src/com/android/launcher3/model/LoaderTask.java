@@ -818,7 +818,13 @@ public class LoaderTask implements Runnable {
             for (int i = 0; i < apps.size(); i++) {
                 LauncherActivityInfo app = apps.get(i);
                 // This builds the icon bitmaps.
-                mBgAllAppsList.add(new AppInfo(app, user, quietMode), app);
+                String pkgName = app.getComponentName().getPackageName();
+                String userHandle = app.getUser().toString();
+//                int describeContents = userHandle.describeContents();
+                if (userHandle.contains("{0}") || app.getComponentName().getPackageName().contains("com.tencent.mm")){
+                    Log.e("shadow","pkgName: " + pkgName + userHandle);
+                    mBgAllAppsList.add(new AppInfo(app, user, quietMode), app);
+                }
             }
 
             ManagedProfileHeuristic.onAllAppsLoaded(mApp.getContext(), apps, user);

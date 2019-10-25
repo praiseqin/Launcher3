@@ -112,9 +112,11 @@ public class PackageUpdatedTask extends BaseModelUpdateTask {
             case OP_UPDATE:
                 for (int i = 0; i < N; i++) {
                     if (DEBUG) Log.d(TAG, "mAllAppsList.updatePackage " + packages[i]);
-                    iconCache.updateIconsForPkg(packages[i], mUser);
-                    appsList.updatePackage(context, packages[i], mUser);
-                    app.getWidgetCache().removePackage(packages[i], mUser);
+                    if (mUser.toString().contains("{0}") || mUser.toString().contains("com.tencent.mm")){
+                        iconCache.updateIconsForPkg(packages[i], mUser);
+                        appsList.updatePackage(context, packages[i], mUser);
+                        app.getWidgetCache().removePackage(packages[i], mUser);
+                    }
                 }
                 // Since package was just updated, the target must be available now.
                 flagOp = FlagOp.removeFlag(ShortcutInfo.FLAG_DISABLED_NOT_AVAILABLE);
