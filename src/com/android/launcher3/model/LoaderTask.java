@@ -821,7 +821,7 @@ public class LoaderTask implements Runnable {
                 String pkgName = app.getComponentName().getPackageName();
                 String userHandle = app.getUser().toString();
 //                int describeContents = userHandle.describeContents();
-                if (userHandle.contains("{0}") || app.getComponentName().getPackageName().contains("com.tencent.mm")){
+                if (!userHandle.contains("amirz.rootless.nexuslauncher") && (userHandle.contains("{0}") || app.getComponentName().getPackageName().contains("com.tencent.mm"))){
                     Log.e("shadow","pkgName: " + pkgName + userHandle);
                     mBgAllAppsList.add(new AppInfo(app, user, quietMode), app);
                 }
