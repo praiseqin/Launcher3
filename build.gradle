@@ -27,12 +27,22 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storeFile file('./keystore/alpha-system.keystore')
+            storePassword "android"
+            keyAlias "android"
+            keyPassword "android"
+        }
+    }
+
     lintOptions {
         abortOnError false
     }
 
     buildTypes {
         debug {
+            signingConfig signingConfigs.release
             minifyEnabled false
             applicationIdSuffix ".debug"
         }
@@ -45,6 +55,7 @@ android {
         }
 
         release {
+            signingConfig signingConfigs.release
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
                     'proguard.flags'
