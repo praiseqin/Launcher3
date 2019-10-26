@@ -545,6 +545,11 @@ public class LoaderTask implements Runnable {
                             folderInfo.spanY = 1;
                             folderInfo.options = c.getInt(optionsIndex);
 
+                            //去除桌面WORK子空间文件夹
+                            String folderName = folderInfo.title.toString();
+                            if (folderName.equalsIgnoreCase("Work")){
+                                break;
+                            }
                             // no special handling required for restored folders
                             c.markRestored();
 
@@ -822,7 +827,7 @@ public class LoaderTask implements Runnable {
                 String userHandle = app.getUser().toString();
 //                int describeContents = userHandle.describeContents();
                 if (!userHandle.contains("amirz.rootless.nexuslauncher") && (userHandle.contains("{0}") || app.getComponentName().getPackageName().contains("com.tencent.mm"))){
-                    Log.e("shadow","pkgName: " + pkgName + userHandle);
+//                    Log.e("shadow","pkgName: " + pkgName + userHandle);
                     mBgAllAppsList.add(new AppInfo(app, user, quietMode), app);
                 }
             }
