@@ -21,7 +21,6 @@
         android:id="@+id/layout"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        launcher:containerType="hotseat" />
+        android:layout_gravity="bottom"/>
 <!--    <include layout="@layout/search_container_hotseat" />-->
 </com.android.launcher3.Hotseat>

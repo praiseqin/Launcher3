@@ -69,7 +69,6 @@ public class AllAppsQsbLayout extends AbstractQsbLayout implements SearchUiManag
                     onScrollRangeChangeListener.onScrollRangeChanged(bottom);
                 } else {
                     onScrollRangeChangeListener.onScrollRangeChanged(bottom
-                            - HotseatQsbWidget.getBottomMargin(mActivity)
                             - (((ViewGroup.MarginLayoutParams) getLayoutParams()).topMargin
                             + (int) getTranslationY() + getResources().getDimensionPixelSize(R.dimen.qsb_widget_height)));
                 }

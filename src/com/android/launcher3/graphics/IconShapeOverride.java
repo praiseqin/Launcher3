@@ -59,6 +59,9 @@ public class IconShapeOverride {
     private static final int RESTART_REQUEST_CODE = 42; // the answer to everything
 
     public static boolean isSupported(Context context) {
+        if (context!=null){
+            return true;
+        }
         if (!Utilities.ATLEAST_OREO) {
             return false;
         }
@@ -111,7 +114,7 @@ public class IconShapeOverride {
     }
 
     private static String getAppliedValue(Context context) {
-        return getDevicePrefs(context).getString(KEY_PREFERENCE, "");
+        return getDevicePrefs(context).getString(KEY_PREFERENCE, "M50 0A50 50,0,1,1,50 100A50 50,0,1,1,50 0");
     }
 
     public static void handlePreferenceUi(ListPreference preference) {
